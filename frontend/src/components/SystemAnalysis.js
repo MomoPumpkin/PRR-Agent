@@ -45,7 +45,15 @@ const getIconForType = (type) => {
 
 const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
   const [loading, setLoading] = useState(true);
-  const [analysis, setAnalysis] = useState(null);
+  const [analysis, setAnalysis] = useState({
+    components: [],
+    dependencies: [],
+    criticalPaths: [],
+    singlePointsOfFailure: [],
+    recommendations: [],
+    availabilityTier: '',
+    tierJustification: ''
+  });
   const [error, setError] = useState(null);
   const [showError, setShowError] = useState(false);
 
@@ -68,7 +76,8 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
           throw new Error(response.data.error);
         }
         
-        setAnalysis(response.data.result);
+        // The API returns { analysisId, result }, we want the result
+        setAnalysis(response.data.result || mockSystemAnalysis());
         setLoading(false);
       } catch (err) {
         console.error("Error analyzing system:", err);
@@ -77,7 +86,6 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
         setLoading(false);
         
         // For demo purposes, if the API fails, use mock data
-        // In production, you'd want to handle this differently
         setAnalysis(mockSystemAnalysis());
       }
     };
@@ -175,7 +183,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               System Components
             </Typography>
             <List dense>
-              {analysis.components.map((component, index) => (
+              {analysis?.components?.map((component, index) => (
                 <ListItem key={index}>
                   <ListItemIcon>
                     {getIconForType(component.type)}
@@ -186,7 +194,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
                       <>
                         {component.description}
                         <Box sx={{ mt: 0.5 }}>
-                          {component.technologies.map((tech, i) => (
+                          {component?.technologies?.map((tech, i) => (
                             <Chip 
                               key={i} 
                               label={tech} 
@@ -216,7 +224,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               Dependencies
             </Typography>
             <List dense sx={{ mb: 2 }}>
-              {analysis.dependencies.map((dep, index) => (
+              {analysis?.dependencies?.map((dep, index) => (
                 <ListItem key={index}>
                   <ListItemText 
                     primary={`${dep.source} → ${dep.target}`} 
@@ -232,7 +240,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               Critical Paths
             </Typography>
             <List dense>
-              {analysis.criticalPaths.map((path, index) => (
+              {analysis?.criticalPaths?.map((path, index) => (
                 <ListItem key={index}>
                   <ListItemText 
                     primary={`Path ${index + 1}`} 
@@ -255,7 +263,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               Single Points of Failure
             </Typography>
             <List dense sx={{ mb: 2 }}>
-              {analysis.singlePointsOfFailure.map((spof, index) => (
+              {analysis?.singlePointsOfFailure?.map((spof, index) => (
                 <ListItem key={index}>
                   <ListItemIcon>
                     <WarningIcon color="warning" />
@@ -274,7 +282,7 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               Recommendations
             </Typography>
             <List dense>
-              {analysis.recommendations.map((rec, index) => (
+              {analysis?.recommendations?.map((rec, index) => (
                 <ListItem key={index}>
                   <ListItemIcon>
                     <DoneIcon color="success" />
@@ -297,15 +305,17 @@ const SystemAnalysis = ({ file, metadata, onAnalysisComplete, onBack }) => {
               <Typography variant="subtitle2" sx={{ mr: 1 }}>
                 Recommended Tier:
               </Typography>
-              <Chip 
-                label={`Tier ${analysis.availabilityTier.charAt(4)} (99.9% Availability Target)`} 
-                color="primary" 
-                variant="filled" 
-              />
+              {analysis?.availabilityTier && (
+                <Chip 
+                  label={`Tier ${analysis.availabilityTier.charAt(4)} (99.9% Availability Target)`} 
+                  color="primary" 
+                  variant="filled" 
+                />
+              )}
             </Box>
             
             <Typography variant="body2">
-              {analysis.tierJustification}
+              {analysis?.tierJustification}
             </Typography>
           </Paper>
         </Grid>
