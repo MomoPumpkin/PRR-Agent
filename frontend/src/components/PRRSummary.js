@@ -9,12 +9,6 @@ import {
   Paper,
   Tabs,
   Tab,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Grid,
-  Chip,
   Alert,
   IconButton
 } from '@mui/material';

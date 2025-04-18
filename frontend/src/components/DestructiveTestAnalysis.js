@@ -12,7 +12,6 @@ import {
   AccordionDetails,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   Grid,
   Chip,
