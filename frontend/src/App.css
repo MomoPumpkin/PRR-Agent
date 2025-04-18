@@ -1,0 +1,72 @@
+/* src/App.css */
+.app-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .file-upload-container {
+    border: 2px dashed #ccc;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .file-upload-container:hover {
+    border-color: #1976d2;
+  }
+  
+  .file-preview {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 1rem;
+  }
+  
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Transitions */
+  .fade-enter {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .file-preview {
+      max-height: 200px;
+    }
+    
+    .responsive-tabs {
+      flex-direction: column;
+    }
+  }

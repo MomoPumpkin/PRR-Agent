@@ -1,0 +1,77 @@
+2025-04-18 11:23:31,795 - DEBUG - Calling on_part_begin with no data
+2025-04-18 11:23:31,795 - DEBUG - Calling on_header_field with data[42:61]
+2025-04-18 11:23:31,795 - DEBUG - Calling on_header_value with data[63:129]
+2025-04-18 11:23:31,795 - DEBUG - Calling on_header_end with no data
+2025-04-18 11:23:31,795 - DEBUG - Calling on_header_field with data[131:143]
+2025-04-18 11:23:31,796 - DEBUG - Calling on_header_value with data[145:154]
+2025-04-18 11:23:31,796 - DEBUG - Calling on_header_end with no data
+2025-04-18 11:23:31,796 - DEBUG - Calling on_headers_finished with no data
+2025-04-18 11:23:31,796 - DEBUG - Calling on_part_data with data[158:44159]
+2025-04-18 11:23:31,796 - DEBUG - Calling on_part_end with no data
+2025-04-18 11:23:31,796 - DEBUG - Calling on_end with no data
+2025-04-18 11:23:31,810 - INFO - Received analysis request for file ID: a93a3d71-85a2-475d-899a-9004bafc5e5a
+2025-04-18 11:23:31,810 - INFO - Retrieved file: sample-architecture-diagram.png (44001 bytes)
+2025-04-18 11:23:31,810 - DEBUG - Initializing SREAgent
+2025-04-18 11:23:31,810 - DEBUG - API Key loaded: Yes
+2025-04-18 11:23:31,811 - DEBUG - Successfully imported google.generativeai
+2025-04-18 11:23:31,811 - DEBUG - Configured genai with API key
+2025-04-18 11:23:31,811 - DEBUG - Successfully initialized gemini-pro-vision model
+2025-04-18 11:23:31,811 - INFO - Starting architecture analysis
+2025-04-18 11:23:31,811 - INFO - Starting analysis for project: RE Tools Roadmap
+2025-04-18 11:23:31,811 - INFO - Image data type: <class 'bytes'>
+2025-04-18 11:23:31,811 - INFO - Image data size: 44001 bytes
+2025-04-18 11:23:31,811 - INFO - Converted image to base64, length: 58668
+2025-04-18 11:23:31,811 - INFO - Using MIME type: image/png
+2025-04-18 11:23:31,811 - INFO - Preparing to call Gemini API
+2025-04-18 11:23:43,244 - INFO - Received response from Gemini API
+2025-04-18 11:23:43,245 - INFO - Response text preview: ```json
+{
+  "Project Name": "RE Tools Roadmap",
+  "Description": "fgfgbb",
+  "Business Impact": "cri...
+2025-04-18 11:23:43,245 - INFO - Attempting to extract JSON from response
+2025-04-18 11:23:43,246 - INFO - JSON found in code block
+2025-04-18 11:23:43,247 - DEBUG - JSON text to parse: {
+  "Project Name": "RE Tools Roadmap",
+  "Description": "fgfgbb",
+  "Business Impact": "critical",
+  "1. System Components": {
+    "Components": [
+      {
+        "Name": "Azure Load Balancer",
+     ...
+2025-04-18 11:23:43,247 - INFO - Successfully parsed JSON response
+2025-04-18 11:23:43,253 - INFO - Received analysis request for file ID: a93a3d71-85a2-475d-899a-9004bafc5e5a
+2025-04-18 11:23:43,253 - INFO - Retrieved file: sample-architecture-diagram.png (44001 bytes)
+2025-04-18 11:23:43,254 - DEBUG - Initializing SREAgent
+2025-04-18 11:23:43,254 - DEBUG - API Key loaded: Yes
+2025-04-18 11:23:43,254 - DEBUG - Successfully imported google.generativeai
+2025-04-18 11:23:43,254 - DEBUG - Configured genai with API key
+2025-04-18 11:23:43,254 - DEBUG - Successfully initialized gemini-pro-vision model
+2025-04-18 11:23:43,254 - INFO - Starting architecture analysis
+2025-04-18 11:23:43,254 - INFO - Starting analysis for project: RE Tools Roadmap
+2025-04-18 11:23:43,254 - INFO - Image data type: <class 'bytes'>
+2025-04-18 11:23:43,254 - INFO - Image data size: 44001 bytes
+2025-04-18 11:23:43,254 - INFO - Converted image to base64, length: 58668
+2025-04-18 11:23:43,254 - INFO - Using MIME type: image/png
+2025-04-18 11:23:43,254 - INFO - Preparing to call Gemini API
+2025-04-18 11:23:53,565 - INFO - Received response from Gemini API
+2025-04-18 11:23:53,566 - INFO - Response text preview: ```json
+{
+  "Project Name": "RE Tools Roadmap",
+  "Description": "fgfgbb",
+  "Business Impact": "cri...
+2025-04-18 11:23:53,566 - INFO - Attempting to extract JSON from response
+2025-04-18 11:23:53,566 - INFO - JSON found in code block
+2025-04-18 11:23:53,566 - DEBUG - JSON text to parse: {
+  "Project Name": "RE Tools Roadmap",
+  "Description": "fgfgbb",
+  "Business Impact": "critical",
+  "1. System Components": {
+    "components": [
+      {
+        "name": "Azure Load Balancer",
+     ...
+2025-04-18 11:23:53,567 - ERROR - JSON decode error: Expecting value: line 142 column 7 (char 3897)
+2025-04-18 11:23:53,567 - INFO - Falling back to text extraction
+2025-04-18 11:23:53,567 - INFO - Analysis complete. First component: "components"
