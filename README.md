@@ -38,7 +38,7 @@ The project is divided into two main parts:
    ```
 4. Run the backend server:
    ```bash
-   python app.py
+   uvicorn app:app --reload --host 0.0.0.0 --port 8000
    ```
 
 ### Frontend
